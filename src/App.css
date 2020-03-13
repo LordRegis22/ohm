@@ -13,11 +13,12 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  fill: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 9s ease-in-out;
+    /* animation: App-logo-spin infinite 9s ease-in-out; */
   }
 }
 

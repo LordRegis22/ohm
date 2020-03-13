@@ -2,41 +2,44 @@ import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 
 const Om = () => {
-  const [toggle, setToggle] = useState(true);
-  const [length, setLength] = useState(1000);
+  const [breathe, setBreathe] = useState(false);
+  const [springMass, setSpringMass] = useState(100);
   const props = useSpring({
-    config: { duration: length, mass: 1, tension: 280, friction: 30 },
-    size: toggle ? 0.3 : 2,
-    fill: "white"
+    config: { mass: springMass, tension: 100, friction: 0 },
+    from: { size: 0.5, opacity: 0.4 },
+    size: 1,
+    opacity: 0.8
   });
 
   const sizeFunc = x => {
     return `scale(${x})`;
   };
 
-  const handleClick = () => {
-    setToggle(!toggle);
-    setLength(length + 100);
+  const handleClick = springMass => {
+    setSpringMass(springMass);
   };
 
   return (
     <>
-      <button
-        onClick={handleClick}
-        style={{
-          height: "100px",
-          width: "100px",
-          backgroundColor: "white",
-          position: "absolute",
-          bottom: "10vh"
-        }}
-      ></button>
       <animated.svg
         viewBox="78.367 133.329 346.249 345.408"
         width="346.249"
         height="345.408"
         className="App-logo"
-        style={{ transform: props.size.interpolate(sizeFunc) }}
+        style={
+          breathe
+            ? {
+                transform: props.size.interpolate(sizeFunc),
+                opacity: props.opacity,
+                alignSelf: "center",
+                justifySelf: "center"
+              }
+            : {
+                alignSelf: "center",
+                justifySelf: "center",
+                transform: "scale(1)"
+              }
+        }
       >
         {/* <defs>
           <linearGradient id="grad3" x1="50%" y1="50%" x2="50%" y2="10%">
@@ -57,6 +60,49 @@ const Om = () => {
           transform="matrix(0.221533, 0, 0, 0.21588, -78.732798, 54.72473)"
         ></path>
       </animated.svg>
+      <div
+        className="buttonRow"
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          flexDirection: "row-reverse",
+          width: "100vw",
+          alignSelf: "center"
+        }}
+      >
+        <button
+          onClick={() => handleClick(50)}
+          style={{
+            height: "100px",
+            width: "100px",
+            backgroundColor: "white"
+          }}
+        >
+          Fast Breath
+        </button>
+        <button
+          onClick={() => setBreathe(!breathe)}
+          style={{
+            height: "100px",
+            width: "100px",
+            backgroundColor: "red",
+            color: "white"
+          }}
+        >
+          Breathe
+        </button>
+        <button
+          onClick={() => handleClick(200)}
+          style={{
+            height: "100px",
+            width: "100px",
+            backgroundColor: "black",
+            color: "white"
+          }}
+        >
+          Slow Breath
+        </button>
+      </div>
     </>
   );
 };
