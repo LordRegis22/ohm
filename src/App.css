@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "Darker Grotesque", sans-serif;
+  src: url("https://fonts.googleapis.com/css?family=Darker+Grotesque");
+}
+
+button {
+  font-family: "Darker Grotesque", sans-serif;
+  text-transform: lowercase !important;
+  font-size: 1.2rem;
+}
+
 .App {
   text-align: center;
   min-height: 100vh;
@@ -35,6 +46,32 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.input-slider {
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #ddd;
+  border: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 1px solid white;
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 20%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  margin-top: -6.5px;
 }
 
 @keyframes App-logo-spin {

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useSpring, animated } from "react-spring";
+import { Context } from "../Context";
+import Inputs from "./Inputs";
 
 const Om = () => {
-  const [breathe, setBreathe] = useState(false);
-  const [springMass, setSpringMass] = useState(100);
+  let { breathe, springTension } = useContext(Context);
+
   const props = useSpring({
-    config: { mass: springMass, tension: 100, friction: 0 },
+    config: { mass: 2, tension: springTension, friction: 0 },
     from: { size: 0.5, opacity: 0.4 },
     size: 1,
     opacity: 0.8
@@ -13,10 +15,6 @@ const Om = () => {
 
   const sizeFunc = x => {
     return `scale(${x})`;
-  };
-
-  const handleClick = springMass => {
-    setSpringMass(springMass);
   };
 
   return (
@@ -60,49 +58,7 @@ const Om = () => {
           transform="matrix(0.221533, 0, 0, 0.21588, -78.732798, 54.72473)"
         ></path>
       </animated.svg>
-      <div
-        className="buttonRow"
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          flexDirection: "row-reverse",
-          width: "100vw",
-          alignSelf: "center"
-        }}
-      >
-        <button
-          onClick={() => handleClick(50)}
-          style={{
-            height: "100px",
-            width: "100px",
-            backgroundColor: "white"
-          }}
-        >
-          Fast Breath
-        </button>
-        <button
-          onClick={() => setBreathe(!breathe)}
-          style={{
-            height: "100px",
-            width: "100px",
-            backgroundColor: "red",
-            color: "white"
-          }}
-        >
-          Breathe
-        </button>
-        <button
-          onClick={() => handleClick(200)}
-          style={{
-            height: "100px",
-            width: "100px",
-            backgroundColor: "black",
-            color: "white"
-          }}
-        >
-          Slow Breath
-        </button>
-      </div>
+      <Inputs />
     </>
   );
 };
