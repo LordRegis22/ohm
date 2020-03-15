@@ -9,6 +9,12 @@ button {
   font-size: 1.2rem;
 }
 
+h1 {
+  font-family: "Darker Grotesque", sans-serif;
+  text-transform: lowercase !important;
+  font-size: 4rem;
+}
+
 .App {
   text-align: center;
   min-height: 100vh;

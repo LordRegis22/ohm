@@ -8,7 +8,8 @@ function Inputs() {
     breathe,
     setBreathe,
     handleChange,
-    springTension
+    springTension,
+    startTimer
   } = useContext(Context);
   return (
     <div style={{ display: "grid", gridTemplateRows: "1fr 1fr" }}>
@@ -37,6 +38,7 @@ function Inputs() {
           text="Fast Breath"
           onClick={() => handleClick(50)}
         />
+        <Button color="blue" text="Start Timer" onClick={() => startTimer(5)} />
       </div>
       <div>
         <input
@@ -44,9 +46,11 @@ function Inputs() {
           style={{
             width: "80%"
           }}
+          label="Breath speed"
           type="range"
-          min="1"
-          max="10"
+          min=".5"
+          max="3.5"
+          step="0.01"
           value={springTension}
           onChange={handleChange}
         ></input>

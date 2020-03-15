@@ -1,17 +1,9 @@
 import React, { useContext } from "react";
-import { useSpring, animated } from "react-spring";
+import { animated } from "react-spring";
 import { Context } from "../Context";
-import Inputs from "./Inputs";
 
 const Om = () => {
-  let { breathe, springTension } = useContext(Context);
-
-  const props = useSpring({
-    config: { mass: 2, tension: springTension, friction: 0 },
-    from: { size: 0.5, opacity: 0.4 },
-    size: 1,
-    opacity: 0.8
-  });
+  let { breathe, springProps } = useContext(Context);
 
   const sizeFunc = x => {
     return `scale(${x})`;
@@ -27,8 +19,8 @@ const Om = () => {
         style={
           breathe
             ? {
-                transform: props.size.interpolate(sizeFunc),
-                opacity: props.opacity,
+                transform: springProps.size.interpolate(sizeFunc),
+                opacity: springProps.opacity,
                 alignSelf: "center",
                 justifySelf: "center"
               }
@@ -39,18 +31,6 @@ const Om = () => {
               }
         }
       >
-        {/* <defs>
-          <linearGradient id="grad3" x1="50%" y1="50%" x2="50%" y2="10%">
-            <stop
-              offset="0%"
-              style={{ stopColor: "rgb(255,255,0)", stopOpacity: 1 }}
-            />
-            <stop
-              offset="100%"
-              style={{ stopColor: "rgb(255,0,0)", stopOpacity: 1 }}
-            />
-          </linearGradient>
-        </defs> */}
         <path
           // fill="url(#grad3)"
           id="path2396_1_"
@@ -58,7 +38,6 @@ const Om = () => {
           transform="matrix(0.221533, 0, 0, 0.21588, -78.732798, 54.72473)"
         ></path>
       </animated.svg>
-      <Inputs />
     </>
   );
 };

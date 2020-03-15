@@ -1,5 +1,7 @@
 import React from "react";
 import Om from "./components/Om";
+import Timer from "./components/Timer";
+import Drawer from "./components/Drawer";
 import "./App.css";
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
       }}
     >
       <Om />
+      <Timer />
+      <Drawer />>
     </div>
   );
 }
