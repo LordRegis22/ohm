@@ -17,6 +17,11 @@ function ContextProvider(props) {
       opacity: 0.8
     })
   );
+  const [drawer, setDrawer] = useState(false);
+
+  const openDrawer = () => {
+    setDrawer(!drawer);
+  };
 
   const handleClick = chosenMass => {
     setSpringTension(chosenMass);
@@ -67,7 +72,9 @@ function ContextProvider(props) {
         handleChange,
         springProps,
         startTimer,
-        timeLeft
+        timeLeft,
+        openDrawer,
+        drawer
       }}
     >
       {props.children}

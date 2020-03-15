@@ -16,7 +16,7 @@ function App() {
     >
       <Om />
       <Timer />
-      <Drawer />>
+      <Drawer />
     </div>
   );
 }

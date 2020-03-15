@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { animated } from "react-spring";
 import { Context } from "../Context";
+import Button from "./Button";
 
 const Om = () => {
-  let { breathe, springProps } = useContext(Context);
+  let { breathe, springProps, openDrawer } = useContext(Context);
 
   const sizeFunc = x => {
     return `scale(${x})`;
@@ -38,6 +39,7 @@ const Om = () => {
           transform="matrix(0.221533, 0, 0, 0.21588, -78.732798, 54.72473)"
         ></path>
       </animated.svg>
+      <Button onClick={openDrawer} text="Open Drawer"></Button>
     </>
   );
 };

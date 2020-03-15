@@ -33,11 +33,11 @@ h1 {
   fill: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    /* animation: App-logo-spin infinite 9s ease-in-out; */
+    animation: App-logo-spin infinite 9s ease-in-out;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -56,11 +56,12 @@ h1 {
 
 .input-slider {
   -webkit-appearance: none;
+  background-color: transparent;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
   height: 2px;
-  background: #ddd;
+  background: #aaa;
   border: none;
 }
 

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../Context";
 import Button from "./Button";
+import { findByLabelText } from "@testing-library/react";
 
 function Inputs() {
   const {
@@ -12,15 +13,15 @@ function Inputs() {
     startTimer
   } = useContext(Context);
   return (
-    <div style={{ display: "grid", gridTemplateRows: "1fr 1fr" }}>
+    <>
       <div
         className="buttonRow"
         style={{
           display: "flex",
+          gridRowStart: "span 1",
+          gridColumnStart: "span 4",
           justifyContent: "space-around",
-          flexDirection: "row-reverse",
-          width: "100vw",
-          alignSelf: "center"
+          alignItems: "center"
         }}
       >
         <Button
@@ -40,22 +41,21 @@ function Inputs() {
         />
         <Button color="blue" text="Start Timer" onClick={() => startTimer(5)} />
       </div>
-      <div>
-        <input
-          className="input-slider"
-          style={{
-            width: "80%"
-          }}
-          label="Breath speed"
-          type="range"
-          min=".5"
-          max="3.5"
-          step="0.01"
-          value={springTension}
-          onChange={handleChange}
-        ></input>
-      </div>
-    </div>
+      <input
+        className="input-slider"
+        style={{
+          gridColumn: "1 / span 3"
+        }}
+        label="Breath speed"
+        type="range"
+        min=".5"
+        max="3.5"
+        step="0.01"
+        value={springTension}
+        onChange={handleChange}
+      ></input>
+      <p>Breath Speed: {springTension}</p>
+    </>
   );
 }
 
