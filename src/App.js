@@ -10,12 +10,11 @@ function App() {
       className="App"
       style={{
         display: "grid",
-        gridTemplateRows: "2fr 1fr",
+        gridTemplateRows: "2fr 1fr 1fr",
         height: "100vh"
       }}
     >
       <Om />
-      <Timer />
       <Drawer />
     </div>
   );
