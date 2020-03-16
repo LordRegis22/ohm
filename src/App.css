@@ -15,6 +15,10 @@ h1 {
   font-size: 4rem;
 }
 
+*:focus {
+  outline: none;
+}
+
 .App {
   text-align: center;
   min-height: 100vh;

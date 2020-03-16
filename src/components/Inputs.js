@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import { Context } from "../Context";
 import Button from "./Button";
-import { findByLabelText } from "@testing-library/react";
+import Slider from "./Slider";
 
 function Inputs() {
   const {
-    handleClick,
-    breathe,
-    setBreathe,
-    handleChange,
+    handleBreatheClick,
+    handleBreathingChange,
     springTension,
-    startTimer
+    time,
+    handleTimeChange,
+    bellFrequency,
+    handleBellFrequencyChange
   } = useContext(Context);
   return (
     <>
@@ -25,36 +26,57 @@ function Inputs() {
         }}
       >
         <Button
-          color="blue"
-          text="Slow Breath"
-          onClick={() => handleClick(500)}
-        />
-        <Button
           color="purple"
           text="Breathe."
-          onClick={() => setBreathe(!breathe)}
+          onClick={() => handleBreatheClick()}
         />
-        <Button
-          color="light blue"
-          text="Fast Breath"
-          onClick={() => handleClick(50)}
-        />
-        <Button color="blue" text="Start Timer" onClick={() => startTimer(5)} />
       </div>
-      <input
+
+      <Slider
         className="input-slider"
         style={{
-          gridColumn: "1 / span 3"
+          gridColumn: "1 / span 3",
+          padding: "0 1rem"
         }}
-        label="Breath speed"
+        label="Breathing"
         type="range"
-        min=".5"
-        max="3.5"
-        step="0.01"
+        min={0.5}
+        max={3.5}
+        step={0.01}
         value={springTension}
-        onChange={handleChange}
-      ></input>
-      <p>Breath Speed: {springTension}</p>
+        onChange={handleBreathingChange}
+        text="Breathing Rate"
+      />
+      <Slider
+        className="input-slider"
+        style={{
+          gridColumn: "1 / span 3",
+          padding: "0 1rem"
+        }}
+        label="Meditation Time"
+        type="range"
+        min={1}
+        max={60}
+        step={1}
+        value={time}
+        onChange={handleTimeChange}
+        text="Meditation Time"
+      />
+      <Slider
+        className="input-slider"
+        style={{
+          gridColumn: "1 / span 3",
+          padding: "0 1rem"
+        }}
+        label="Bell Frequency"
+        type="range"
+        min={1}
+        max={20}
+        step={1}
+        value={bellFrequency}
+        onChange={handleBellFrequencyChange}
+        text="Bell Frequency"
+      />
     </>
   );
 }
