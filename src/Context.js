@@ -23,44 +23,54 @@ function ContextProvider(props) {
     setDrawer(!drawer);
   };
 
-  const handleClick = chosenMass => {
-    setSpringTension(chosenMass);
-    setSpringProps(springProps);
+  const handleBreatheClick = () => {
+    setBreathe(!breathe);
   };
 
-  const handleChange = e => {
+  const handleBreathingChange = e => {
     setSpringTension(e.target.value);
     setSpringProps(springProps);
   };
 
-  const [timeLeft, setTimeLeft] = useState(60 * 5);
-  const startTimer = timeLeft => {
-    var timer = timeLeft,
-      minutes,
-      seconds;
-    //     setInterval(function() {
-    //       minutes = parseInt(timer / 60, 10);
-    //       seconds = parseInt(timer % 60, 10);
+  const [time, setTime] = useState("");
 
-    //       console.log(minutes);
-    //       console.log(seconds);
-
-    //       minutes = minutes < 10 ? "0" + minutes : minutes;
-    //       seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    //       setTimeLeft(minutes + ":" + seconds);
-
-    //       if (--timer < 0) {
-    //         timer = timeLeft;
-    //       }
-    //     }, 1000);
+  const handleTimeChange = e => {
+    setTime(e.target.value);
   };
+
+  const [bellFrequency, setBellFrequency] = useState(0);
+
+  const handleBellFrequencyChange = e => {
+    setBellFrequency(e.target.value);
+  };
+
+  //const [timeLeft, setTimeLeft] = useState(60 * 5);
+  //const startTimer = timeLeft => {
+  //var timer = timeLeft,
+  //minutes,
+  //seconds;
+  //     setInterval(function() {
+  //       minutes = parseInt(timer / 60, 10);
+  //       seconds = parseInt(timer % 60, 10);
+
+  //       console.log(minutes);
+  //       console.log(seconds);
+
+  //       minutes = minutes < 10 ? "0" + minutes : minutes;
+  //       seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  //       setTimeLeft(minutes + ":" + seconds);
+
+  //       if (--timer < 0) {
+  //         timer = timeLeft;
+  //       }
+  //     }, 1000);
+  //};
 
   //   window.onload = function() {
   //     var fiveMinutes = 60 * 5,
   //       display = document.querySelector("#time");
   //     startTimer(fiveMinutes, display);
-  //   };
 
   return (
     <Context.Provider
@@ -68,13 +78,15 @@ function ContextProvider(props) {
         breathe,
         setBreathe,
         springTension,
-        handleClick,
-        handleChange,
         springProps,
-        startTimer,
-        timeLeft,
         openDrawer,
-        drawer
+        drawer,
+        time,
+        handleBreatheClick,
+        handleBreathingChange,
+        handleTimeChange,
+        bellFrequency,
+        handleBellFrequencyChange
       }}
     >
       {props.children}

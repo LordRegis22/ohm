@@ -26,9 +26,9 @@ const Om = () => {
                 justifySelf: "center"
               }
             : {
+                backgroundColor: "black",
                 alignSelf: "center",
-                justifySelf: "center",
-                transform: "scale(1)"
+                justifySelf: "center"
               }
         }
       >
