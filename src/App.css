@@ -31,10 +31,12 @@ h1 {
   );
 }
 
-.App-logo {
+.App-logo path {
   height: 40vmin;
   pointer-events: none;
-  fill: white;
+  stroke: white;
+  stroke-width: 7px;
+  stroke-dasharray: 12000;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {

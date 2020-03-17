@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import { useSpring } from "react-spring";
+import { useSpring, config } from "react-spring";
 const Context = createContext();
 
 function ContextProvider(props) {
@@ -12,11 +12,17 @@ function ContextProvider(props) {
         tension: springTension,
         friction: 0
       },
-      from: { size: 0.5, opacity: 0.4 },
+      from: { size: 0.5, opacity: 0.4, strokeDashoffset: 12 },
       size: 1,
-      opacity: 0.8
+      opacity: 0.8,
+      strokeDashoffset: 12000
     })
   );
+  const omSpringProps = useSpring({
+    config: { duration: 6000 },
+    from: { strokeDashoffset: 12000 },
+    strokeDashoffset: 0
+  });
   const [drawer, setDrawer] = useState(false);
 
   const openDrawer = () => {
@@ -44,34 +50,6 @@ function ContextProvider(props) {
     setBellFrequency(e.target.value);
   };
 
-  //const [timeLeft, setTimeLeft] = useState(60 * 5);
-  //const startTimer = timeLeft => {
-  //var timer = timeLeft,
-  //minutes,
-  //seconds;
-  //     setInterval(function() {
-  //       minutes = parseInt(timer / 60, 10);
-  //       seconds = parseInt(timer % 60, 10);
-
-  //       console.log(minutes);
-  //       console.log(seconds);
-
-  //       minutes = minutes < 10 ? "0" + minutes : minutes;
-  //       seconds = seconds < 10 ? "0" + seconds : seconds;
-
-  //       setTimeLeft(minutes + ":" + seconds);
-
-  //       if (--timer < 0) {
-  //         timer = timeLeft;
-  //       }
-  //     }, 1000);
-  //};
-
-  //   window.onload = function() {
-  //     var fiveMinutes = 60 * 5,
-  //       display = document.querySelector("#time");
-  //     startTimer(fiveMinutes, display);
-
   return (
     <Context.Provider
       value={{
@@ -79,6 +57,7 @@ function ContextProvider(props) {
         setBreathe,
         springTension,
         springProps,
+        omSpringProps,
         openDrawer,
         drawer,
         time,
