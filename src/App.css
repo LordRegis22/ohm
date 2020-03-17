@@ -34,7 +34,7 @@ h1 {
 .App-logo path {
   height: 40vmin;
   pointer-events: none;
-  stroke: white;
+  stroke: rgba(255, 255, 255, 0.3);
   stroke-width: 7px;
   stroke-dasharray: 12000;
 }

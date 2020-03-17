@@ -1,5 +1,5 @@
-import React, { useState, createContext } from "react";
-import { useSpring, config } from "react-spring";
+import React, { useState, createContext, useRef } from "react";
+import { useSpring, config, useChain } from "react-spring";
 const Context = createContext();
 
 function ContextProvider(props) {
@@ -18,10 +18,17 @@ function ContextProvider(props) {
       strokeDashoffset: 12000
     })
   );
-  const omSpringProps = useSpring({
-    config: { duration: 6000 },
+  const omDrawSpringProps = useSpring({
+    config: { mass: 100, tension: 70, friction: 100, clamp: true },
     from: { strokeDashoffset: 12000 },
     strokeDashoffset: 0
+  });
+  const omFillSpringProps = useSpring({
+    config: { mass: 600, tension: 700, friction: 400 },
+    from: { o: 0, s: 0.8 },
+    o: 0.5,
+    s: 1,
+    delay: 3000
   });
   const [drawer, setDrawer] = useState(false);
 
@@ -57,7 +64,8 @@ function ContextProvider(props) {
         setBreathe,
         springTension,
         springProps,
-        omSpringProps,
+        omDrawSpringProps,
+        omFillSpringProps,
         openDrawer,
         drawer,
         time,

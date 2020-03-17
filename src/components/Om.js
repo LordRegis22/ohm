@@ -4,7 +4,13 @@ import { Context } from "../Context";
 import Button from "./Button";
 
 const Om = () => {
-  let { breathe, omSpringProps, springProps, openDrawer } = useContext(Context);
+  let {
+    breathe,
+    omDrawSpringProps,
+    omFillSpringProps,
+    springProps,
+    openDrawer
+  } = useContext(Context);
 
   const sizeFunc = x => {
     return `scale(${x})`;
@@ -16,9 +22,11 @@ const Om = () => {
         viewBox="78.367 133.329 346.249 345.408"
         width="346.249"
         height="345.408"
-        fill="none"
+        fill={omFillSpringProps.o
+          .interpolate({ range: [0, 0.75, 1], output: [0, 1, 0.5] })
+          .interpolate(o => `rgba(255, 255, 255, ${o})`)}
         className="App-logo"
-        strokeDashoffset={omSpringProps.strokeDashoffset}
+        strokeDashoffset={omDrawSpringProps.strokeDashoffset}
         style={
           breathe
             ? {
@@ -28,6 +36,7 @@ const Om = () => {
                 justifySelf: "center"
               }
             : {
+                transform: omFillSpringProps.s.interpolate(sizeFunc),
                 alignSelf: "center",
                 justifySelf: "center"
               }
