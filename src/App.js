@@ -15,6 +15,7 @@ function App() {
       }}
     >
       <Om />
+      {/* <Timer /> */}
       <Drawer />
     </div>
   );
