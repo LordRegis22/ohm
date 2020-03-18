@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import Om from "./components/Om";
 import Timer from "./components/Timer";
 import Drawer from "./components/Drawer";
+import Button from "./components/Button"
+import {Context} from "./Context";
 import "./App.css";
 
 function App() {
+  const {ready, openDrawer} = useContext(Context)
   return (
     <div
       className="App"
@@ -14,10 +17,14 @@ function App() {
         height: "100vh"
       }}
     >
-      Test
       <Om />
-      {/* <Timer /> */}
-      <Drawer />
+      <div className="the-rest" style={{opacity: ready ? 1 : 0}}>
+      {ready && 
+      <>
+      <Button onClick={openDrawer} text="Open Drawer">
+      </Button>
+      <Drawer /></>}
+      </div>
     </div>
   );
 }
