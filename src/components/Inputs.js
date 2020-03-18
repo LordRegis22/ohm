@@ -11,7 +11,8 @@ function Inputs() {
     time,
     handleTimeChange,
     bellFrequency,
-    handleBellFrequencyChange
+    handleBellFrequencyChange,
+    openDrawer
   } = useContext(Context);
   return (
     <>
@@ -25,11 +26,8 @@ function Inputs() {
           alignItems: "center"
         }}
       >
-        <Button
-          color="purple"
-          text="Breathe."
-          onClick={() => handleBreatheClick()}
-        />
+        <Button text="Breathe." onClick={() => handleBreatheClick()} />
+        <Button text="Close Drawer" onClick={() => openDrawer()} />
       </div>
 
       <Slider

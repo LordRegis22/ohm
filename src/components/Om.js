@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { animated, interpolate } from "react-spring";
 import { Context } from "../Context";
 import Button from "./Button";
-import {d3} from "d3-ease"
+import { d3 } from "d3-ease";
 
 const Om = () => {
   let {
     breathe,
     omDrawSpringProps,
+    omSlideSpringProps,
     omFillSpringProps,
     springProps,
     openDrawer
@@ -19,15 +20,14 @@ const Om = () => {
 
   const marginFunc = x => {
     return `${x}vh`;
-  }
+  };
 
   return (
     <>
       <animated.svg
         viewBox="78.367 133.329 346.249 345.408"
-        width="346.249"
-        height="345.408"
         fill={omFillSpringProps.o
+          .interpolate({ range: [0, 0.5, 1], output: [0, 1, 0.5] })
           .interpolate(o => `rgba(255, 255, 255, ${o})`)}
         className="App-logo"
         strokeDashoffset={omDrawSpringProps.strokeDashoffset}
@@ -37,13 +37,20 @@ const Om = () => {
                 transform: springProps.size.interpolate(sizeFunc),
                 opacity: springProps.opacity,
                 alignSelf: "center",
-                justifySelf: "center",
+                justifySelf: "center"
               }
             : {
-                transform: omFillSpringProps.s.interpolate(sizeFunc),
-                marginTop: omFillSpringProps.mt.interpolate({range: [0,.6, 0], output:[1, 2, 3]}).interpolate(marginFunc),
+                transform: omFillSpringProps.s
+                  .interpolate({ range: [0, 0.5, 1], output: [1, 1.3, 1] })
+                  .interpolate(sizeFunc),
+                marginTop: omSlideSpringProps.mt
+                  .interpolate({
+                    range: [0, 0.35, 1],
+                    output: [20, 20, 5]
+                  })
+                  .interpolate(marginFunc),
                 alignSelf: "center",
-                justifySelf: "center",
+                justifySelf: "center"
               }
         }
       >
@@ -53,7 +60,6 @@ const Om = () => {
           transform="matrix(0.221533, 0, 0, 0.21588, -78.732798, 54.72473)"
         ></path>
       </animated.svg>
-      
     </>
   );
 };
