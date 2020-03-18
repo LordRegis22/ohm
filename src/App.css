@@ -19,6 +19,10 @@ h1 {
   outline: none;
 }
 
+*>.the-rest {
+  transition: all 5s ease;
+}
+
 .App {
   text-align: center;
   min-height: 100vh;
