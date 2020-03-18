@@ -14,6 +14,7 @@ function App() {
         height: "100vh"
       }}
     >
+      Test
       <Om />
       {/* <Timer /> */}
       <Drawer />
