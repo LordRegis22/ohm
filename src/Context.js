@@ -3,7 +3,7 @@ import { useSpring, config, useChain } from "react-spring";
 const Context = createContext();
 
 function ContextProvider(props) {
-  const [ready, setReady] = useState(false)
+  const [ready, setReady] = useState(false);
   const [breathe, setBreathe] = useState(false);
   const [springTension, setSpringTension] = useState(2.5);
   const [springProps, setSpringProps] = useState(
@@ -19,22 +19,30 @@ function ContextProvider(props) {
       strokeDashoffset: 12000
     })
   );
-  const [omSpring, setOmSpring] = useState(false)
+  const [omSpring, setOmSpring] = useState(false);
   const omDrawSpringProps = useSpring({
     config: { mass: 100, tension: 70, friction: 100, clamp: true },
     from: { strokeDashoffset: 12000 },
     strokeDashoffset: 0,
-    onRest:(() => setOmSpring(true))
+    onRest: () => setOmSpring(true)
   });
-  
+
+  const omSpringConfig = { mass: 90, tension: 120, friction: 200 };
+
   const omFillSpringProps = useSpring({
-    config: { mass: 100, tension: 80, friction: 100 },
-    from: {o: 0, s: 1, mt: 0},
-    o: .6,
-    s: omSpring ? 1 : 1.4,
-    mt: omSpring ? 1 : 0,
+    config: omSpringConfig,
+    from: { o: 0, s: 0 },
+    o: 1,
+    s: 1,
     delay: 3000,
-    onRest: (() => setReady(true))
+    onRest: () => {
+      return setReady(true);
+    }
+  });
+
+  const omSlideSpringProps = useSpring({
+    config: omSpringConfig,
+    mt: omSpring ? 1 : 0
   });
   const [drawer, setDrawer] = useState(false);
 
@@ -73,6 +81,7 @@ function ContextProvider(props) {
         springProps,
         omDrawSpringProps,
         omFillSpringProps,
+        omSlideSpringProps,
         openDrawer,
         drawer,
         time,

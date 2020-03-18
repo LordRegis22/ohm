@@ -19,7 +19,7 @@ h1 {
   outline: none;
 }
 
-*>.the-rest {
+* > .the-rest {
   transition: all 5s ease;
 }
 
@@ -36,11 +36,14 @@ h1 {
 }
 
 .App-logo path {
-  height: 40vmin;
   pointer-events: none;
   stroke: rgba(255, 255, 255, 0.3);
   stroke-width: 7px;
   stroke-dasharray: 12000;
+}
+
+.App-logo {
+  height: 50vh;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {

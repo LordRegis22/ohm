@@ -7,7 +7,7 @@ function Drawer() {
   const { drawer } = useContext(Context);
 
   let springProps = useSpring({
-    height: drawer ? "0" : "4vh",
+    height: drawer ? "40vh" : "0vh",
     borderRadius: "5px",
     border: "1px solid white",
     backgroundColor: "transparent",
