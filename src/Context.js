@@ -1,24 +1,17 @@
-import React, { useState, createContext, useRef } from "react";
-import { useSpring, config, useChain } from "react-spring";
+import React, { useState, createContext } from "react";
+import { useSpring } from "react-spring";
 const Context = createContext();
 
 function ContextProvider(props) {
   const [ready, setReady] = useState(false);
   const [breathe, setBreathe] = useState(false);
-  const [springTension, setSpringTension] = useState(2.5);
-  const [springProps, setSpringProps] = useState(
-    useSpring({
-      config: {
-        mass: 2,
-        tension: springTension,
-        friction: 0
-      },
-      from: { size: 0.5, opacity: 0.4, strokeDashoffset: 0 },
-      size: 1,
-      opacity: 0.8,
-      strokeDashoffset: 12000
-    })
-  );
+  const [springTension, setSpringTension] = useState(2000);
+  const springProps = useSpring({
+    config: { duration: Math.abs(springTension) },
+    reset: true,
+    from: { t: 0 },
+    t: 1
+  });
   const [omSpring, setOmSpring] = useState(false);
   const omDrawSpringProps = useSpring({
     config: { mass: 100, tension: 70, friction: 100, clamp: true },
@@ -27,7 +20,7 @@ function ContextProvider(props) {
     onRest: () => setOmSpring(true)
   });
 
-  const omSpringConfig = { mass: 90, tension: 120, friction: 200 };
+  const omSpringConfig = { mass: 80, tension: 110, friction: 180 };
 
   const omFillSpringProps = useSpring({
     config: omSpringConfig,
@@ -56,7 +49,6 @@ function ContextProvider(props) {
 
   const handleBreathingChange = e => {
     setSpringTension(e.target.value);
-    setSpringProps(springProps);
   };
 
   const [time, setTime] = useState("");

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Om from "./components/Om";
-import Timer from "./components/Timer";
 import Drawer from "./components/Drawer";
 import Button from "./components/Button";
 import { Context } from "./Context";

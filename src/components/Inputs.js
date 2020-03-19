@@ -38,9 +38,9 @@ function Inputs() {
         }}
         label="Breathing"
         type="range"
-        min={0.5}
-        max={3.5}
-        step={0.01}
+        min={-10000}
+        max={-1000}
+        step={-10}
         value={springTension}
         onChange={handleBreathingChange}
         text="Breathing Rate"

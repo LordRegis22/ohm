@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
-import { animated, interpolate } from "react-spring";
+import { animated } from "react-spring";
 import { Context } from "../Context";
-import Button from "./Button";
-import { d3 } from "d3-ease";
 
 const Om = () => {
   let {
@@ -10,8 +8,7 @@ const Om = () => {
     omDrawSpringProps,
     omSlideSpringProps,
     omFillSpringProps,
-    springProps,
-    openDrawer
+    springProps
   } = useContext(Context);
 
   const sizeFunc = x => {
@@ -34,10 +31,19 @@ const Om = () => {
         style={
           breathe
             ? {
-                transform: springProps.size.interpolate(sizeFunc),
-                opacity: springProps.opacity,
+                transform: springProps.t
+                  .interpolate({
+                    range: [0, 0.3, 0.5, 0.7, 1],
+                    output: [1, 1.3, 1, 0.7, 1]
+                  })
+                  .interpolate(sizeFunc),
+                opacity: springProps.t.interpolate({
+                  range: [0, 0.3, 0.5, 0.7, 1],
+                  output: [0.5, 1, 0.5, 0.4, 0.5]
+                }),
                 alignSelf: "center",
-                justifySelf: "center"
+                justifySelf: "center",
+                marginTop: "5vh"
               }
             : {
                 transform: omFillSpringProps.s
@@ -45,7 +51,7 @@ const Om = () => {
                   .interpolate(sizeFunc),
                 marginTop: omSlideSpringProps.mt
                   .interpolate({
-                    range: [0, 0.35, 1],
+                    range: [0, 0.4, 1],
                     output: [20, 20, 5]
                   })
                   .interpolate(marginFunc),
