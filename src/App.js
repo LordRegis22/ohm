@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import Om from "./components/Om";
 import Drawer from "./components/Drawer";
-import Button from "./components/Button";
+import Timer from "./components/Timer";
+import { AiOutlineArrowUp } from "react-icons/ai";
 import { Context } from "./Context";
 import "./App.css";
 
 function App() {
-  const { ready, openDrawer, drawer } = useContext(Context);
+  const { ready, openDrawer, drawer, breathe } = useContext(Context);
   return (
     <div
       className="App"
@@ -17,15 +18,25 @@ function App() {
       }}
     >
       <Om />
-      <div
-        className="the-rest"
-        style={{ opacity: ready ? 1 : 0, paddingTop: "5rem" }}
-      >
+      <div className="the-rest" style={{ opacity: ready ? 1 : 0 }}>
         {ready && (
           <>
             {!drawer && (
-              <Button onClick={openDrawer} text="Open Drawer"></Button>
+              <AiOutlineArrowUp
+                onClick={openDrawer}
+                style={{
+                  position: "absolute",
+                  bottom: "0",
+                  color: "white",
+                  fontSize: "1.75rem",
+                  marginBottom: ".5rem",
+                  opacity: ".8",
+                  cursor: "pointer"
+                }}
+              />
             )}
+            {breathe && <Timer style={{ alignSelf: "center" }} />}
+
             <Drawer />
           </>
         )}

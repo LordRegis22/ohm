@@ -5,12 +5,11 @@ const Context = createContext();
 function ContextProvider(props) {
   const [ready, setReady] = useState(false);
   const [breathe, setBreathe] = useState(false);
+  const [breathingSpring, setBreathingSpring] = useState(false);
   const [springTension, setSpringTension] = useState(2000);
   const springProps = useSpring({
-    config: { duration: Math.abs(springTension) },
-    reset: true,
-    from: { t: 0 },
-    t: 1
+    config: { duration: Math.abs(springTension), friction: 0 },
+    t: breathe ? 1 : 0
   });
   const [omSpring, setOmSpring] = useState(false);
   const omDrawSpringProps = useSpring({
@@ -45,13 +44,17 @@ function ContextProvider(props) {
 
   const handleBreatheClick = () => {
     setBreathe(!breathe);
+    setBreathingSpring(!breathingSpring);
+    if (!breathe) {
+      setDrawer(!drawer);
+    }
   };
 
   const handleBreathingChange = e => {
     setSpringTension(e.target.value);
   };
 
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState(1000);
 
   const handleTimeChange = e => {
     setTime(e.target.value);
@@ -69,6 +72,7 @@ function ContextProvider(props) {
         ready,
         breathe,
         setBreathe,
+        breathingSpring,
         springTension,
         springProps,
         omDrawSpringProps,
@@ -77,6 +81,7 @@ function ContextProvider(props) {
         openDrawer,
         drawer,
         time,
+        setTime,
         handleBreatheClick,
         handleBreathingChange,
         handleTimeChange,
