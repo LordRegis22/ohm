@@ -7,10 +7,6 @@ function ContextProvider(props) {
   const [breathe, setBreathe] = useState(false);
   const [breathingSpring, setBreathingSpring] = useState(false);
   const [breathRate, setBreathRate] = useState(5);
-  // const springProps = useSpring({
-  //   config: { duration: Math.abs(springTension), friction: 0 },
-  //   t: breathe ? 1 : 0
-  // });
   const [omSpring, setOmSpring] = useState(false);
   const omDrawSpringProps = useSpring({
     config: { mass: 100, tension: 70, friction: 100, clamp: true },
