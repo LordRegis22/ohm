@@ -79,7 +79,7 @@ function Inputs() {
         onChange={handleBellFrequencyChange}
         text="Bell Frequency"
         input={bellFrequency}
-        unit="minutes"
+        unit="minute"
       />
     </>
   );
