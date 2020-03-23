@@ -35,7 +35,17 @@ function App() {
                 }}
               />
             )}
-            {breathe && <Timer style={{ alignSelf: "center" }} />}
+            {breathe && (
+              <div style={{ position: "relative", top: "55vh" }}>
+                <Timer
+                  style={{
+                    position: "absolute",
+                    left: "48%",
+                    bottom: "25vh"
+                  }}
+                />
+              </div>
+            )}
 
             <Drawer />
           </>
