@@ -6,11 +6,11 @@ function ContextProvider(props) {
   const [ready, setReady] = useState(false);
   const [breathe, setBreathe] = useState(false);
   const [breathingSpring, setBreathingSpring] = useState(false);
-  const [springTension, setSpringTension] = useState(2000);
-  const springProps = useSpring({
-    config: { duration: Math.abs(springTension), friction: 0 },
-    t: breathe ? 1 : 0
-  });
+  const [breathRate, setBreathRate] = useState(5);
+  // const springProps = useSpring({
+  //   config: { duration: Math.abs(springTension), friction: 0 },
+  //   t: breathe ? 1 : 0
+  // });
   const [omSpring, setOmSpring] = useState(false);
   const omDrawSpringProps = useSpring({
     config: { mass: 100, tension: 70, friction: 100, clamp: true },
@@ -51,7 +51,7 @@ function ContextProvider(props) {
   };
 
   const handleBreathingChange = e => {
-    setSpringTension(e.target.value);
+    setBreathRate(Math.abs(e.target.value));
   };
 
   const [timeInput, setTimeInput] = useState(900);
@@ -78,8 +78,7 @@ function ContextProvider(props) {
         breathe,
         setBreathe,
         breathingSpring,
-        springTension,
-        springProps,
+        breathRate,
         omDrawSpringProps,
         omFillSpringProps,
         omSlideSpringProps,

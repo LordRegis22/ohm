@@ -8,7 +8,7 @@ const Om = () => {
     omDrawSpringProps,
     omSlideSpringProps,
     omFillSpringProps,
-    springProps
+    breathRate
   } = useContext(Context);
 
   const sizeFunc = x => {
@@ -23,8 +23,6 @@ const Om = () => {
     <>
       <animated.svg
         viewBox="0 0 100 100"
-        width="100%"
-        height="100%"
         fill={omFillSpringProps.o
           .interpolate({ range: [0, 0.5, 1], output: [0, 1, 0.5] })
           .interpolate(o => `rgba(255, 255, 255, ${o})`)}
@@ -33,16 +31,7 @@ const Om = () => {
         style={
           breathe
             ? {
-                transform: springProps.t
-                  .interpolate({
-                    range: [0, 0.3, 0.5, 0.7, 1],
-                    output: [1, 1.3, 1, 0.7, 1]
-                  })
-                  .interpolate(sizeFunc),
-                opacity: springProps.t.interpolate({
-                  range: [0, 0.3, 0.5, 0.7, 1],
-                  output: [0.5, 1, 0.5, 0.4, 0.5]
-                }),
+                animation: `App-logo-spin infinite ${breathRate}s ease-in-out`,
                 alignSelf: "center",
                 justifySelf: "center",
                 marginTop: "5vh"

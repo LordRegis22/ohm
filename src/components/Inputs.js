@@ -8,7 +8,7 @@ function Inputs() {
     breathe,
     handleBreatheClick,
     handleBreathingChange,
-    springTension,
+    breathRate,
     timeInput,
     handleTimeChange,
     bellFrequency,
@@ -39,12 +39,14 @@ function Inputs() {
         }}
         label="Breathing"
         type="range"
-        min={-10000}
-        max={-1000}
-        step={-10}
-        value={springTension}
+        min={-15}
+        max={-1}
+        step={0.5}
+        value={breathRate}
         onChange={handleBreathingChange}
         text="Breathing Rate"
+        input={Math.round(60 / breathRate)}
+        unit="breaths per minute"
       />
       <Slider
         className="input-slider"

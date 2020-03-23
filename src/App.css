@@ -44,12 +44,10 @@ h1 {
   stroke: rgba(255, 255, 255, 0.3);
   stroke-width: 7px;
   stroke-dasharray: 12000;
-  height: 100vh !important;
 }
 
 .App-logo {
   height: 50vh;
-  animation: App-logo-spin infinite 9s ease-in-out;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
