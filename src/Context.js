@@ -54,11 +54,16 @@ function ContextProvider(props) {
     setSpringTension(e.target.value);
   };
 
-  const [time, setTime] = useState(1000);
+  const [timeInput, setTimeInput] = useState(900);
+  const [timeRemaining, setTimeRemaining] = useState(900);
 
   const handleTimeChange = e => {
-    setTime(e.target.value);
+    setTimeInput(e.target.value);
+    setTimeRemaining(timeInput);
   };
+
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
   const [bellFrequency, setBellFrequency] = useState(0);
 
@@ -80,8 +85,14 @@ function ContextProvider(props) {
         omSlideSpringProps,
         openDrawer,
         drawer,
-        time,
-        setTime,
+        timeInput,
+        setTimeInput,
+        timeRemaining,
+        setTimeRemaining,
+        minutes,
+        setMinutes,
+        seconds,
+        setSeconds,
         handleBreatheClick,
         handleBreathingChange,
         handleTimeChange,

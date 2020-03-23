@@ -5,10 +5,11 @@ import Slider from "./Slider";
 
 function Inputs() {
   const {
+    breathe,
     handleBreatheClick,
     handleBreathingChange,
     springTension,
-    time,
+    timeInput,
     handleTimeChange,
     bellFrequency,
     handleBellFrequencyChange,
@@ -53,12 +54,15 @@ function Inputs() {
         }}
         label="Meditation Time"
         type="range"
-        min={1}
-        max={60}
-        step={1}
-        value={time}
+        min={0}
+        max={6000}
+        step={60}
+        value={timeInput}
         onChange={handleTimeChange}
         text="Meditation Time"
+        breathe={breathe}
+        input={timeInput / 60}
+        unit="minutes"
       />
       <Slider
         className="input-slider"
@@ -74,6 +78,8 @@ function Inputs() {
         value={bellFrequency}
         onChange={handleBellFrequencyChange}
         text="Bell Frequency"
+        input={bellFrequency}
+        unit="minutes"
       />
     </>
   );

@@ -13,8 +13,12 @@ function Slider(props) {
         step={props.step}
         value={props.value}
         onChange={props.onChange}
+        disabled={props.breathe}
       ></input>
-      <p style={{ color: "white" }}>{props.text}</p>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <p style={{ color: "white", width: "100%" }}>{props.text}</p>
+        <span style={{ color: "white" }}>{`${props.input} ${props.unit}`}</span>
+      </div>
     </>
   );
 }

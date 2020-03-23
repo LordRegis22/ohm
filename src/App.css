@@ -3,6 +3,10 @@
   src: url("https://fonts.googleapis.com/css?family=Darker+Grotesque");
 }
 
+* {
+  box-sizing: border-box;
+}
+
 button {
   font-family: "Darker Grotesque", sans-serif;
   text-transform: lowercase !important;
@@ -40,6 +44,7 @@ h1 {
   stroke: rgba(255, 255, 255, 0.3);
   stroke-width: 7px;
   stroke-dasharray: 12000;
+  height: 100vh !important;
 }
 
 .App-logo {
