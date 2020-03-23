@@ -49,6 +49,7 @@ h1 {
 
 .App-logo {
   height: 50vh;
+  animation: App-logo-spin infinite 9s ease-in-out;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {

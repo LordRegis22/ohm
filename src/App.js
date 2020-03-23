@@ -14,11 +14,15 @@ function App() {
       style={{
         display: "grid",
         gridTemplateRows: "2fr 1fr 1fr",
-        height: "100vh"
+        height: "100vh",
+        width: "100vw"
       }}
     >
       <Om />
-      <div className="the-rest" style={{ opacity: ready ? 1 : 0 }}>
+      <div
+        className="the-rest"
+        style={{ opacity: ready ? 1 : 0, width: "100vwn" }}
+      >
         {ready && (
           <>
             {!drawer && (
@@ -35,17 +39,7 @@ function App() {
                 }}
               />
             )}
-            {breathe && (
-              <div style={{ position: "relative", top: "55vh" }}>
-                <Timer
-                  style={{
-                    position: "absolute",
-                    left: "48%",
-                    bottom: "25vh"
-                  }}
-                />
-              </div>
-            )}
+            {breathe && <Timer style={{ alignSelf: "center" }} />}
 
             <Drawer />
           </>
