@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
 function Slider(props) {
   return (
     <>
       <input
-        className="input-slider"
+        className='input-slider'
         style={props.style}
         label={props.label}
-        type="range"
+        type='range'
         min={props.min}
         max={props.max}
         step={props.step}
@@ -15,10 +15,13 @@ function Slider(props) {
         onChange={props.onChange}
         disabled={props.breathe}
       ></input>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <p style={{ color: "white", width: "100%" }}>{props.text}</p>
-        <span style={{ color: "white" }}>{`${props.input} ${props.unit}`}</span>
-      </div>
+      <span
+        style={{ color: 'white', width: '20%' }}
+      >{`${props.input}${props.unit}`}</span>
+
+      {
+        //<span style={{ color: 'white', width: '100%' }}>{props.text}</span>
+      }
     </>
   );
 }

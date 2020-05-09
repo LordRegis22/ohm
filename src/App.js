@@ -1,27 +1,27 @@
-import React, { useContext } from "react";
-import Om from "./components/Om";
-import Drawer from "./components/Drawer";
-import Timer from "./components/Timer";
-import { AiOutlineArrowUp } from "react-icons/ai";
-import { Context } from "./Context";
-import "./App.css";
+import React, { useContext } from 'react';
+import Om from './components/Om';
+import Drawer from './components/Drawer';
+import Timer from './components/Timer';
+import { AiOutlineArrowUp } from 'react-icons/ai';
+import { Context } from './Context';
+import './App.css';
 
 function App() {
   const { ready, openDrawer, drawer, breathe } = useContext(Context);
   return (
     <div
-      className="App"
+      className='App'
       style={{
-        display: "grid",
-        gridTemplateRows: "2fr 1fr 1fr",
-        height: "100vh",
-        width: "100vw"
+        display: 'grid',
+        gridTemplateRows: '2fr 1fr 1fr',
+        height: '100vh',
+        width: '100vw',
       }}
     >
       <Om />
       <div
-        className="the-rest"
-        style={{ opacity: ready ? 1 : 0, width: "100vwn" }}
+        className='the-rest'
+        style={{ opacity: ready ? 1 : 0, width: '100vwn' }}
       >
         {ready && (
           <>
@@ -29,17 +29,17 @@ function App() {
               <AiOutlineArrowUp
                 onClick={openDrawer}
                 style={{
-                  position: "absolute",
-                  bottom: "0",
-                  color: "white",
-                  fontSize: "1.75rem",
-                  marginBottom: ".5rem",
-                  opacity: ".8",
-                  cursor: "pointer"
+                  position: 'absolute',
+                  bottom: '0',
+                  color: 'white',
+                  fontSize: '1.75rem',
+                  marginBottom: '.5rem',
+                  opacity: '.8',
+                  cursor: 'pointer',
                 }}
               />
             )}
-            {breathe && <Timer style={{ alignSelf: "center" }} />}
+            {breathe && <Timer style={{ alignSelf: 'center' }} />}
 
             <Drawer />
           </>
