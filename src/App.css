@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Darker Grotesque", sans-serif;
-  src: url("https://fonts.googleapis.com/css?family=Darker+Grotesque");
+  font-family: 'Darker Grotesque', sans-serif;
+  src: url('https://fonts.googleapis.com/css?family=Darker+Grotesque');
 }
 
 * {
@@ -8,13 +8,13 @@
 }
 
 button {
-  font-family: "Darker Grotesque", sans-serif;
+  font-family: 'Darker Grotesque', sans-serif;
   text-transform: lowercase !important;
   font-size: 1.2rem;
 }
 
 h1 {
-  font-family: "Darker Grotesque", sans-serif;
+  font-family: 'Darker Grotesque', sans-serif;
   text-transform: lowercase !important;
   font-size: 4rem;
 }
@@ -37,6 +37,7 @@ h1 {
     rgba(9, 9, 121, 1) 20%,
     rgba(0, 212, 255, 1) 100%
   );
+  overflow: hidden;
 }
 
 .App-logo path {
@@ -76,13 +77,13 @@ h1 {
   background-color: transparent;
 }
 
-input[type="range"]::-webkit-slider-runnable-track {
+input[type='range']::-webkit-slider-runnable-track {
   height: 2px;
   background: #aaa;
   border: none;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: none;
   height: 16px;
@@ -101,8 +102,8 @@ input[type="range"]::-webkit-slider-thumb {
 @keyframes App-logo-spin {
   0%,
   100% {
-    transform: scale(1);
-    opacity: 0.3;
+    transform: scale(0.5);
+    opacity: 0.1;
   }
   50% {
     transform: scale(2);
