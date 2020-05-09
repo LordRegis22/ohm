@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { Context } from "../Context";
-import Button from "./Button";
-import Slider from "./Slider";
+import React, { useContext } from 'react';
+import { Context } from '../Context';
+import Button from './Button';
+import Slider from './Slider';
 
 function Inputs() {
   const {
@@ -13,75 +13,75 @@ function Inputs() {
     handleTimeChange,
     bellFrequency,
     handleBellFrequencyChange,
-    openDrawer
+    openDrawer,
   } = useContext(Context);
   return (
     <>
       <div
-        className="buttonRow"
+        className='buttonRow'
         style={{
-          display: "flex",
-          gridRowStart: "span 1",
-          gridColumnStart: "span 4",
-          justifyContent: "space-around",
-          alignItems: "center"
+          display: 'flex',
+          gridRowStart: 'span 1',
+          gridColumnStart: 'span 4',
+          justifyContent: 'space-around',
+          alignItems: 'center',
         }}
       >
-        <Button text="Breathe." onClick={() => handleBreatheClick()} />
-        <Button text="Close Drawer" onClick={() => openDrawer()} />
+        <Button text='Breathe.' onClick={() => handleBreatheClick()} />
+        <Button text='Close Drawer' onClick={() => openDrawer()} />
       </div>
 
       <Slider
-        className="input-slider"
+        className='input-slider'
         style={{
-          gridColumn: "1 / span 3",
-          padding: "0 1rem"
+          gridColumn: '1 / span 3',
+          padding: '0 1rem',
         }}
-        label="Breathing"
-        type="range"
+        label='Breathing'
+        type='range'
         min={-15}
         max={-1}
         step={0.5}
         value={breathRate}
         onChange={handleBreathingChange}
-        text="Breathing Rate"
-        input={Math.round(60 / breathRate)}
-        unit="breaths per minute"
+        text='Breathing Rate'
+        input={Math.abs(Math.round(60 / breathRate))}
+        unit='breaths per minute'
       />
       <Slider
-        className="input-slider"
+        className='input-slider'
         style={{
-          gridColumn: "1 / span 3",
-          padding: "0 1rem"
+          gridColumn: '1 / span 3',
+          padding: '0 1rem',
         }}
-        label="Meditation Time"
-        type="range"
+        label='Meditation Time'
+        type='range'
         min={0}
         max={6000}
         step={60}
         value={timeInput}
         onChange={handleTimeChange}
-        text="Meditation Time"
+        text='Meditation Time'
         breathe={breathe}
         input={timeInput / 60}
-        unit="minutes"
+        unit='minutes'
       />
       <Slider
-        className="input-slider"
+        className='input-slider'
         style={{
-          gridColumn: "1 / span 3",
-          padding: "0 1rem"
+          gridColumn: '1 / span 3',
+          padding: '0 1rem',
         }}
-        label="Bell Frequency"
-        type="range"
+        label='Bell Frequency'
+        type='range'
         min={1}
         max={20}
         step={1}
         value={bellFrequency}
         onChange={handleBellFrequencyChange}
-        text="Bell Frequency"
+        text='Bell Frequency'
         input={bellFrequency}
-        unit="minute"
+        unit='minute'
       />
     </>
   );

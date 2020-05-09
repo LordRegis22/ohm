@@ -1,5 +1,5 @@
-import React, { useState, createContext } from "react";
-import { useSpring } from "react-spring";
+import React, { useState, createContext } from 'react';
+import { useSpring } from 'react-spring';
 const Context = createContext();
 
 function ContextProvider(props) {
@@ -12,7 +12,7 @@ function ContextProvider(props) {
     config: { mass: 100, tension: 70, friction: 100, clamp: true },
     from: { strokeDashoffset: 12000 },
     strokeDashoffset: 0,
-    onRest: () => setOmSpring(true)
+    onRest: () => setOmSpring(true),
   });
 
   const omSpringConfig = { mass: 80, tension: 110, friction: 180 };
@@ -25,12 +25,12 @@ function ContextProvider(props) {
     delay: 3000,
     onRest: () => {
       return setReady(true);
-    }
+    },
   });
 
   const omSlideSpringProps = useSpring({
     config: omSpringConfig,
-    mt: omSpring ? 1 : 0
+    mt: omSpring ? 1 : 0,
   });
   const [drawer, setDrawer] = useState(false);
 
@@ -46,16 +46,16 @@ function ContextProvider(props) {
     }
   };
 
-  const handleBreathingChange = e => {
-    setBreathRate(Math.abs(e.target.value));
+  const handleBreathingChange = (e) => {
+    setBreathRate(e.target.value);
   };
 
   const [timeInput, setTimeInput] = useState(900);
   const [timeRemaining, setTimeRemaining] = useState(900);
 
-  const handleTimeChange = e => {
+  const handleTimeChange = (e) => {
     setTimeInput(e.target.value);
-    setTimeRemaining(timeInput);
+    setTimeRemaining(e.target.value);
   };
 
   const [minutes, setMinutes] = useState(0);
@@ -63,7 +63,7 @@ function ContextProvider(props) {
 
   const [bellFrequency, setBellFrequency] = useState(0);
 
-  const handleBellFrequencyChange = e => {
+  const handleBellFrequencyChange = (e) => {
     setBellFrequency(e.target.value);
   };
 
@@ -92,7 +92,7 @@ function ContextProvider(props) {
         handleBreathingChange,
         handleTimeChange,
         bellFrequency,
-        handleBellFrequencyChange
+        handleBellFrequencyChange,
       }}
     >
       {props.children}
